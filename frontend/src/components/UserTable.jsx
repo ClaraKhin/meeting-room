@@ -1,6 +1,12 @@
 import { useState } from "react";
 
-const UserTable = ({ users, currentUserId, onCreate, onDelete, onRoleChange }) => {
+const UserTable = ({
+  users,
+  currentUserId,
+  onCreate,
+  onDelete,
+  onRoleChange,
+}) => {
   const [name, setName] = useState("");
   const [role, setRole] = useState("user");
 
@@ -12,23 +18,32 @@ const UserTable = ({ users, currentUserId, onCreate, onDelete, onRoleChange }) =
   };
 
   return (
-    <section className="rounded border border-slate-200 bg-white p-5 shadow-sm">
-      <h2 className="text-lg font-bold text-slate-900">User Management</h2>
+    <section
+      className="rounded border border-slate-200 bg-white shadow-sm"
+      style={{ padding: "1rem" }}
+    >
+      <h2 className="text-lg font-bold text-[#1d4ed8]">User Management</h2>
 
-      <form onSubmit={handleSubmit} className="mt-4 grid gap-3 md:grid-cols-3">
+      <form
+        onSubmit={handleSubmit}
+        className="grid gap-3 md:grid-cols-3"
+        style={{ marginTop: "1rem" }}
+      >
         <input
           type="text"
           value={name}
           onChange={(event) => setName(event.target.value)}
           placeholder="User name"
-          className="rounded border border-slate-300 px-3 py-2 text-sm"
+          className="rounded border border-slate-300 text-sm outline-none placeholder:text-[#537ec5]"
+          style={{ padding: "0.5rem" }}
           required
         />
 
         <select
           value={role}
           onChange={(event) => setRole(event.target.value)}
-          className="rounded border border-slate-300 px-3 py-2 text-sm"
+          className="rounded border border-slate-300 text-sm cursor-pointer outline-none"
+          style={{ padding: "0.5rem" }}
         >
           <option value="user">user</option>
           <option value="owner">owner</option>
@@ -37,35 +52,69 @@ const UserTable = ({ users, currentUserId, onCreate, onDelete, onRoleChange }) =
 
         <button
           type="submit"
-          className="rounded bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-700"
+          className="rounded bg-[#6730ec] text-sm font-medium text-white hover:bg-[#7984ee] cursor-pointer"
+          style={{ padding: "0.5rem 1rem" }}
         >
           Create User
         </button>
       </form>
 
-      <table className="mt-5 w-full border-collapse text-sm">
+      <table
+        className="w-full border-collapse text-sm"
+        style={{ marginTop: "1rem" }}
+      >
         <thead>
           <tr className="bg-slate-100 text-left">
-            <th className="border border-slate-200 p-3">Name</th>
-            <th className="border border-slate-200 p-3">Role</th>
-            <th className="border border-slate-200 p-3">Actions</th>
+            <th
+              className="border border-slate-200 text-[#1d4ed8]"
+              style={{ padding: "1rem" }}
+            >
+              Name
+            </th>
+            <th
+              className="border border-slate-200 text-[#1d4ed8]"
+              style={{ padding: "1rem" }}
+            >
+              Role
+            </th>
+            <th
+              className="border border-slate-200 text-[#1d4ed8]"
+              style={{ padding: "1rem" }}
+            >
+              Actions
+            </th>
           </tr>
         </thead>
 
         <tbody>
           {users.map((user) => (
             <tr key={user.id}>
-              <td className="border border-slate-200 p-3">{user.name}</td>
+              <td
+                className="border border-slate-200 text-[#537ec5] font-medium w-100"
+                style={{ padding: "0.5rem" }}
+              >
+                {user.name}
+              </td>
 
-              <td className="border border-slate-200 p-3 capitalize">
+              <td
+                className="border border-slate-200 capitalize text-[#537ec5] font-medium w-100"
+                style={{ padding: "0.5rem" }}
+              >
                 {user.role}
               </td>
 
-              <td className="border border-slate-200 p-3">
+              <td
+                className="border border-slate-200 w-100 text-center"
+                style={{ padding: "0.5rem" }}
+              >
                 <select
                   value={user.role}
                   onChange={(e) => onRoleChange(user.id, e.target.value)}
-                  className="mr-2 rounded border border-slate-300 px-2 py-1"
+                  className="rounded border border-slate-300 w-55 cursor-pointer outline-none"
+                  style={{
+                    padding: "1rem 0.5rem",
+                    marginRight: "1rem",
+                  }}
                 >
                   <option value="user">user</option>
                   <option value="owner">owner</option>
@@ -75,7 +124,8 @@ const UserTable = ({ users, currentUserId, onCreate, onDelete, onRoleChange }) =
                 <button
                   disabled={user.id === currentUserId}
                   onClick={() => onDelete(user.id)}
-                  className="rounded bg-red-600 px-3 py-1 text-white hover:bg-red-700 disabled:cursor-not-allowed disabled:bg-slate-300"
+                  className="rounded bg-red-600 text-white hover:bg-red-700 cursor-pointer w-35"
+                  style={{ padding: "1rem 0.5rem" }}
                 >
                   Delete
                 </button>

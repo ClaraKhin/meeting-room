@@ -68,7 +68,7 @@ const BookingForm = ({ onCreate }) => {
             type="datetime-local"
             value={startTime}
             onChange={(event) => setStartTime(event.target.value)}
-            className="w-full rounded border border-slate-300 text-sm"
+            className="w-full rounded border border-slate-300 text-sm "
             style={{ padding: "0.5rem" }}
             required
           />
