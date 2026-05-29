@@ -224,7 +224,7 @@ export const getBookingSummary = async (req, res) => {
             const userId = getBookingUserId(booking);
             const userName = user && user.name ? user.name : "Unknown User";
 
-            
+
             if (!summary[userId]) {
                 summary[userId] = {
                     userId,
