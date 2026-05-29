@@ -8,16 +8,6 @@ const demoUsers = [
     name: "Demo Admin",
     role: "admin",
   },
-  {
-    id: import.meta.env.VITE_DEMO_OWNER_ID,
-    name: "Demo Owner",
-    role: "owner",
-  },
-  {
-    id: import.meta.env.VITE_DEMO_USER_ID,
-    name: "Demo User",
-    role: "user",
-  },
 ].filter((user) => user.id);
 
 const mergeUsers = (firstUsers, secondUsers) => {
@@ -31,7 +21,14 @@ const mergeUsers = (firstUsers, secondUsers) => {
 
 const Login = () => {
   const { knownUsers, login, saveKnownUsers } = useUser();
-  const loginUsers = mergeUsers(demoUsers, knownUsers);
+  const savedUsers = knownUsers.filter(
+    (user) =>
+      user.id !== import.meta.env.VITE_DEMO_OWNER_ID &&
+      user.id !== import.meta.env.VITE_DEMO_USER_ID &&
+      user.name !== "Demo Owner" &&
+      user.name !== "Demo User"
+  );
+  const loginUsers = mergeUsers(demoUsers, savedUsers);
   const [selectedUserId, setSelectedUserId] = useState(loginUsers[0]?.id || "");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -84,9 +81,8 @@ const Login = () => {
 
         {demoUsers.length > 0 && (
           <div
-            className=" grid gap-3"
+            className="flex flex-col gap-2"
             style={{
-              gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
               marginTop: "0.5rem",
             }}
           >
