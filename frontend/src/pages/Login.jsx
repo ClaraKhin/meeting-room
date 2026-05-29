@@ -72,7 +72,7 @@ const Login = () => {
         >
           Login
         </h1>
-        <p className="text-sm text-[#769fcd]">
+        <p className="text-sm text-[#537ec5]">
           Choose a demo role to open the dashboard.
         </p>
 
@@ -110,7 +110,7 @@ const Login = () => {
         {loginUsers.length > 0 && (
           <div style={{ marginTop: "1rem" }}>
             <label
-              className="mb-1 block text-sm font-medium text-[#769fcd]"
+              className="mb-1 block text-sm font-medium text-[#537ec5]"
               style={{ marginBottom: "0.5rem" }}
               htmlFor="savedUser"
             >
