@@ -10,42 +10,42 @@ A full-stack web application for managing bookings for a single meeting room wit
 
 ## Authentication / Role Selection
 
-* Login or select users by role
-* Roles:
+- Login or select users by role
+- Roles:
 
-  * Admin
-  * Owner
-  * User
+  - Admin
+  - Owner
+  - User
 
 ## Booking Management
 
-* Create meeting room bookings
-* View all bookings
-* Delete bookings based on permissions
-* Prevent overlapping bookings
-* Allow back-to-back bookings
+- Create meeting room bookings
+- View all bookings
+- Delete bookings based on permissions
+- Prevent overlapping bookings
+- Allow back-to-back bookings
 
 ## Admin Features
 
-* Create users
-* Delete users
-* Change user roles
-* View all users
+- Create users
+- Delete users
+- Change user roles
+- View all users
 
 ## Owner Features
 
-* Delete any booking
-* View bookings grouped by user
-* View booking usage summary
+- Delete any booking
+- View bookings grouped by user
+- View booking usage summary
 
 ---
 
 # Booking Rules
 
-* `startTime` must be before `endTime`
-* Bookings cannot overlap
-* Back-to-back bookings are allowed
-* All times are handled consistently using ISO datetime format
+- `startTime` must be before `endTime`
+- Bookings cannot overlap
+- Back-to-back bookings are allowed
+- All times are handled consistently using ISO datetime format
 
 Overlap validation logic:
 
@@ -61,18 +61,18 @@ if (newStart < existingEnd && newEnd > existingStart) {
 
 ## Frontend
 
-* React.js
-* Axios
-* CSS / TailwindCSS
+- React.js
+- Axios
+- CSS / TailwindCSS
 
 ## Backend
 
-* Node.js
-* Express.js
+- Node.js
+- Express.js
 
 ## Database
 
-* MySQL / SQLite
+- MySQL / SQLite
 
 ---
 
@@ -168,29 +168,29 @@ npm start
 
 Can:
 
-* Create booking
-* View bookings
-* Delete own bookings
+- Create booking
+- View bookings
+- Delete own bookings
 
 Cannot:
 
-* Delete others’ bookings
-* Manage users
+- Delete others’ bookings
+- Manage users
 
 ## Owner
 
 Can:
 
-* Delete any booking
-* View summaries
+- Delete any booking
+- View summaries
 
 ## Admin
 
 Can:
 
-* Manage users
-* Manage roles
-* Delete any booking
+- Manage users
+- Manage roles
+- Delete any booking
 
 ---
 
@@ -198,20 +198,20 @@ Can:
 
 When a user is deleted:
 
-* All bookings created by that user are also deleted (cascade delete behavior)
+- All bookings created by that user are also deleted (cascade delete behavior)
 
 ---
 
 # Future Improvements
 
-* JWT Authentication
-* Calendar view
-* Email notifications
-* Booking filters
-* Unit testing
+- JWT Authentication
+- Calendar view
+- Email notifications
+- Booking filters
+- Unit testing
 
 ---
 
 # Author
 
-Developed by Your Name
+Developed by Khin
