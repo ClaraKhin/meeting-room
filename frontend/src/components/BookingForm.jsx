@@ -55,7 +55,7 @@ const BookingForm = ({ onCreate }) => {
         className="grid gap-4 md:grid-cols-3"
         style={{ marginTop: "0.5rem" }}
       >
-        <div>
+        <div className="min-w-0">
           <label
             className=" block text-sm font-medium text-[#537ec5]"
             style={{ marginBottom: "0.1rem" }}
@@ -68,13 +68,13 @@ const BookingForm = ({ onCreate }) => {
             type="datetime-local"
             value={startTime}
             onChange={(event) => setStartTime(event.target.value)}
-            className="w-full rounded border border-slate-300 text-sm "
+            className="min-w-0 w-full rounded border border-slate-300 text-sm"
             style={{ padding: "0.5rem" }}
             required
           />
         </div>
 
-        <div>
+        <div className="min-w-0">
           <label
             className="block text-sm font-medium text-[#537ec5]"
             style={{ marginBottom: "0.1rem" }}
@@ -87,7 +87,7 @@ const BookingForm = ({ onCreate }) => {
             type="datetime-local"
             value={endTime}
             onChange={(event) => setEndTime(event.target.value)}
-            className="w-full rounded border border-slate-300 text-sm"
+            className="min-w-0 w-full rounded border border-slate-300 text-sm"
             style={{ padding: "0.5rem" }}
             required
           />
@@ -96,7 +96,7 @@ const BookingForm = ({ onCreate }) => {
         <button
           type="submit"
           disabled={loading}
-          className="self-end rounded bg-[#6730ec] text-sm font-medium text-white hover:bg-[#7984ee] cursor-pointer"
+          className="w-full self-end rounded bg-[#6730ec] text-sm font-medium text-white hover:bg-[#7984ee] cursor-pointer md:w-auto"
           style={{ padding: "0.7em" }}
         >
           {loading ? "Saving..." : "Book Room"}

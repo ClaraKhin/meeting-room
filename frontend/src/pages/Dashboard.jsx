@@ -136,7 +136,7 @@ const Dashboard = () => {
           onTabChange={setActiveTab}
         />
 
-        <main className="flex-1 bg-[#d6e6f2]" style={{ padding: "1rem" }}>
+        <main className="min-w-0 flex-1 bg-[#d6e6f2]" style={{ padding: "1rem" }}>
           <section
             className="rounded border border-slate-100 bg-white"
             style={{ marginBottom: "1rem", padding: "1rem" }}
@@ -144,7 +144,7 @@ const Dashboard = () => {
             <p className="text-sm font-medium capitalize text-[#769fcd]">
               {currentUser.role}
             </p>
-            <h2 className="mt-1 text-2xl font-bold text-[#1d4ed8]">
+            <h2 className="mt-1 break-words text-xl font-bold text-[#1d4ed8] sm:text-2xl">
               Welcome, {currentUser.name}
             </h2>
           </section>
@@ -196,7 +196,7 @@ const Dashboard = () => {
 
               {activeTab === "dashboard" && canViewAdminData && (
                 <>
-                  <div className="grid md:grid-cols-3">
+                  <div className="grid gap-3 md:grid-cols-3">
                     <SummaryCard title="Total Bookings" value={totalBookings} />
                     <SummaryCard
                       title="Users With Bookings"

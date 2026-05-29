@@ -15,7 +15,7 @@ const BookingList = ({ bookings, currentUser, onDelete }) => {
       style={{ padding: "1rem" }}
     >
       <div
-        className="flex items-center justify-between"
+        className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between"
         style={{ marginBottom: "1rem" }}
       >
         <h2 className="text-lg font-bold text-[#1d4ed8]">Booking List</h2>

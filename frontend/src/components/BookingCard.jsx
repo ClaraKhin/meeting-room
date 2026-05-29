@@ -11,8 +11,8 @@ const BookingCard = ({ booking, canDelete, onDelete }) => {
       style={{ padding: "1rem" }}
     >
       <div className="flex flex-col justify-between gap-3 md:flex-row md:items-center">
-        <div>
-          <h3 className="font-bold text-[#1d4ed8]">{bookedBy}</h3>
+        <div className="min-w-0">
+          <h3 className="break-words font-bold text-[#1d4ed8]">{bookedBy}</h3>
           <p className="text-sm text-[#537ec5]" style={{ marginTop: "0.5rem" }}>
             {formatDateTime(booking.startTime)} to{" "}
             {formatDateTime(booking.endTime)}
@@ -28,7 +28,7 @@ const BookingCard = ({ booking, canDelete, onDelete }) => {
         {canDelete && (
           <button
             onClick={() => onDelete(booking.id)}
-            className="rounded w-25 bg-red-600 text-sm font-medium text-white hover:bg-red-700 cursor-pointer"
+            className="w-full rounded bg-red-600 text-sm font-medium text-white hover:bg-red-700 cursor-pointer md:w-25"
             style={{ padding: "0.5rem" }}
           >
             Delete

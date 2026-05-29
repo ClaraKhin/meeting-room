@@ -7,11 +7,11 @@ const menuItems = [
 const Sidebar = ({ activeTab, role, onTabChange }) => {
   return (
     <aside
-      className="min-h-[calc(100vh-73px)] border-r border-slate-200 bg-slate-50 md:w-64"
+      className="border-b border-slate-200 bg-slate-50 md:min-h-[calc(100vh-73px)] md:w-64 md:border-b-0 md:border-r"
       style={{ padding: "1rem" }}
     >
       <nav
-        className="space-y-2"
+        className="flex gap-2 overflow-x-auto md:block md:space-y-2"
         style={{ marginBottom: "1rem", marginTop: "1rem" }}
       >
         {menuItems
@@ -20,7 +20,7 @@ const Sidebar = ({ activeTab, role, onTabChange }) => {
             <button
               key={item.key}
               onClick={() => onTabChange(item.key)}
-              className={`w-full rounded text-left text-sm font-medium ${
+              className={`shrink-0 rounded text-left text-sm font-medium md:w-full ${
                 activeTab === item.key
                   ? "bg-slate-900 text-white"
                   : "text-slate-700 hover:bg-slate-200"

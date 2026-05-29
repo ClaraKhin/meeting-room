@@ -56,7 +56,7 @@ const Login = () => {
 
   return (
     <div
-      className=" flex min-h-screen items-center justify-center bg-slate-100 p-4"
+      className="flex min-h-screen items-center justify-center bg-slate-100 px-3 py-6 sm:p-4"
       style={{ backgroundColor: "#d6e6f2" }}
     >
       <div
@@ -112,12 +112,12 @@ const Login = () => {
             >
               Saved Users
             </label>
-            <div className="flex gap-3">
+            <div className="flex flex-col gap-3 sm:flex-row">
               <select
                 id="savedUser"
                 value={selectedUserId}
                 onChange={(event) => setSelectedUserId(event.target.value)}
-                className="w-full rounded border border-slate-300 text-sm"
+                className="min-w-0 w-full rounded border border-slate-300 text-sm"
                 style={{ padding: "0.5rem 1rem" }}
               >
                 {loginUsers.map((user) => (
@@ -129,7 +129,7 @@ const Login = () => {
               <button
                 onClick={() => loginWithUserId(selectedUserId)}
                 disabled={loading}
-                className="rounded bg-[#6730ec] text-sm font-medium text-white hover:bg-[#7984ee] cursor-pointer"
+                className="w-full rounded bg-[#6730ec] text-sm font-medium text-white hover:bg-[#7984ee] cursor-pointer sm:w-auto"
                 style={{ padding: "0.5rem 1rem" }}
               >
                 Login

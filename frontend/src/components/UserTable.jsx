@@ -34,7 +34,7 @@ const UserTable = ({
           value={name}
           onChange={(event) => setName(event.target.value)}
           placeholder="User name"
-          className="rounded border border-slate-300 text-sm outline-none placeholder:text-[#537ec5]"
+          className="min-w-0 rounded border border-slate-300 text-sm outline-none placeholder:text-[#537ec5]"
           style={{ padding: "0.5rem" }}
           required
         />
@@ -42,7 +42,7 @@ const UserTable = ({
         <select
           value={role}
           onChange={(event) => setRole(event.target.value)}
-          className="rounded border border-slate-300 text-sm cursor-pointer outline-none"
+          className="min-w-0 rounded border border-slate-300 text-sm cursor-pointer outline-none"
           style={{ padding: "0.5rem" }}
         >
           <option value="user">user</option>
@@ -60,7 +60,7 @@ const UserTable = ({
       </form>
 
       <table
-        className="w-full border-collapse text-sm"
+        className="block w-full overflow-x-auto border-collapse text-sm md:table"
         style={{ marginTop: "1rem" }}
       >
         <thead>
@@ -90,30 +90,29 @@ const UserTable = ({
           {users.map((user) => (
             <tr key={user.id}>
               <td
-                className="border border-slate-200 text-[#537ec5] font-medium w-100"
+                className="min-w-32 border border-slate-200 text-[#537ec5] font-medium md:w-100"
                 style={{ padding: "0.5rem" }}
               >
                 {user.name}
               </td>
 
               <td
-                className="border border-slate-200 capitalize text-[#537ec5] font-medium w-100"
+                className="min-w-28 border border-slate-200 capitalize text-[#537ec5] font-medium md:w-100"
                 style={{ padding: "0.5rem" }}
               >
                 {user.role}
               </td>
 
               <td
-                className="border border-slate-200 w-100 text-center"
+                className="min-w-56 border border-slate-200 text-center md:w-100"
                 style={{ padding: "0.5rem" }}
               >
                 <select
                   value={user.role}
                   onChange={(e) => onRoleChange(user.id, e.target.value)}
-                  className="rounded border border-slate-300 w-55 cursor-pointer outline-none"
+                  className="mb-2 w-full rounded border border-slate-300 cursor-pointer outline-none sm:mb-0 sm:mr-4 sm:w-55"
                   style={{
                     padding: "1rem 0.5rem",
-                    marginRight: "1rem",
                   }}
                 >
                   <option value="user">user</option>
@@ -124,7 +123,7 @@ const UserTable = ({
                 <button
                   disabled={user.id === currentUserId}
                   onClick={() => onDelete(user.id)}
-                  className="rounded bg-red-600 text-white hover:bg-red-700 cursor-pointer w-35"
+                  className="w-full rounded bg-red-600 text-white hover:bg-red-700 cursor-pointer sm:w-35"
                   style={{ padding: "1rem 0.5rem" }}
                 >
                   Delete
