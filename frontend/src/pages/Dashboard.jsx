@@ -32,7 +32,9 @@ const Dashboard = () => {
 
       if (canViewAdminData) {
         const summaryResponse = await bookingApi.getSummary(currentUser.id);
-        const groupedResponse = await bookingApi.getGroupedByUser(currentUser.id);
+        const groupedResponse = await bookingApi.getGroupedByUser(
+          currentUser.id
+        );
         setSummary(summaryResponse.data.data);
         setGroupedBookings(groupedResponse.data.data);
       } else {
@@ -134,30 +136,51 @@ const Dashboard = () => {
           onTabChange={setActiveTab}
         />
 
-        <main className="flex-1 p-5">
-          <section className="mb-5 rounded border border-slate-200 bg-white p-5 shadow-sm">
-            <p className="text-sm font-medium capitalize text-slate-500">
+        <main className="flex-1 bg-[#d6e6f2]" style={{ padding: "1rem" }}>
+          <section
+            className="rounded border border-slate-100 bg-white"
+            style={{ marginBottom: "1rem", padding: "1rem" }}
+          >
+            <p className="text-sm font-medium capitalize text-[#769fcd]">
               {currentUser.role}
             </p>
-            <h2 className="mt-1 text-2xl font-bold text-slate-900">
+            <h2 className="mt-1 text-2xl font-bold text-[#1d4ed8]">
               Welcome, {currentUser.name}
             </h2>
           </section>
 
           {message && (
-            <p className="mb-5 rounded border border-green-200 bg-green-50 px-3 py-2 text-sm text-green-700">
+            <p
+              className="rounded border border-green-200 bg-green-50 text-sm text-green-700"
+              style={{ padding: "0.5rem 1rem", marginBottom: "1rem" }}
+            >
               {message}
             </p>
           )}
 
           {error && (
-            <p className="mb-5 rounded border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">
+            <p
+              className="rounded border border-red-20o text-sm"
+              style={{
+                marginBottom: "1rem",
+                padding: "0.5rem 1rem",
+                backgroundColor: "#ff0000",
+                color: "#ffcccc",
+                fontWeight: "bold",
+                textAlign: "center",
+              }}
+            >
               {error}
             </p>
           )}
 
           {loading ? (
-            <p className="rounded bg-white p-5 text-slate-600">Loading...</p>
+            <p
+              className="rounded bg-white text-slate-600"
+              style={{ padding: "1rem" }}
+            >
+              Loading...
+            </p>
           ) : (
             <div className="space-y-5">
               {(activeTab === "dashboard" || activeTab === "bookings") && (
@@ -173,18 +196,30 @@ const Dashboard = () => {
 
               {activeTab === "dashboard" && canViewAdminData && (
                 <>
-                  <div className="grid gap-4 md:grid-cols-3">
+                  <div className="grid md:grid-cols-3">
                     <SummaryCard title="Total Bookings" value={totalBookings} />
-                    <SummaryCard title="Users With Bookings" value={summary.length} />
-                    <SummaryCard title="All Users" value={users.length || "-"} />
+                    <SummaryCard
+                      title="Users With Bookings"
+                      value={summary.length}
+                    />
+                    <SummaryCard
+                      title="All Users"
+                      value={users.length || "-"}
+                    />
                   </div>
 
                   {summary.length > 0 && (
-                    <section className="rounded border border-slate-200 bg-white p-5 shadow-sm">
-                      <h2 className="text-lg font-bold text-slate-900">
+                    <section
+                      className="rounded border border-slate-200 bg-white shadow-sm"
+                      style={{ padding: "1rem" }}
+                    >
+                      <h2 className="text-lg font-bold text-[#1d4ed8]">
                         Usage Summary
                       </h2>
-                      <div className="mt-4 grid gap-3 md:grid-cols-3">
+                      <div
+                        className="grid gap-3 md:grid-cols-3"
+                        style={{ marginTop: "1rem" }}
+                      >
                         {summary.map((item) => (
                           <SummaryCard
                             key={item.userId}
@@ -196,11 +231,14 @@ const Dashboard = () => {
                     </section>
                   )}
 
-                  <section className="rounded border border-slate-200 bg-white p-5 shadow-sm">
-                    <h2 className="text-lg font-bold text-slate-900">
+                  <section
+                    className="rounded border border-slate-200 bg-white shadow-sm"
+                    style={{ padding: "1rem" }}
+                  >
+                    <h2 className="text-lg font-bold text-[#1d4ed8]">
                       Bookings Grouped By User
                     </h2>
-                    <div className="mt-4 space-y-3">
+                    <div className="space-y-3" style={{ marginTop: "1rem" }}>
                       {groupedBookings.length === 0 ? (
                         <p className="text-sm text-slate-600">
                           No grouped bookings yet.
@@ -209,12 +247,13 @@ const Dashboard = () => {
                         groupedBookings.map((group) => (
                           <div
                             key={group.userId}
-                            className="rounded border border-slate-200 p-3"
+                            className="rounded border border-slate-200"
+                            style={{ padding: "1rem" }}
                           >
-                            <p className="font-medium text-slate-900">
+                            <p className="font-medium text-[#1d4ed8]">
                               {group.name}
                             </p>
-                            <p className="text-sm text-slate-500">
+                            <p className="text-sm  text-[#537ec5]">
                               {group.bookings.length} bookings
                             </p>
                           </div>

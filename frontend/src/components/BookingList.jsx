@@ -10,16 +10,25 @@ const BookingList = ({ bookings, currentUser, onDelete }) => {
   };
 
   return (
-    <section className="rounded border border-slate-200 bg-white p-5 shadow-sm">
-      <div className="mb-4 flex items-center justify-between">
-        <h2 className="text-lg font-bold text-slate-900">Booking List</h2>
-        <span className="text-sm text-slate-500">
+    <section
+      className="rounded border border-slate-200 bg-white p-5 shadow-sm"
+      style={{ padding: "1rem" }}
+    >
+      <div
+        className="flex items-center justify-between"
+        style={{ marginBottom: "1rem" }}
+      >
+        <h2 className="text-lg font-bold text-[#1d4ed8]">Booking List</h2>
+        <span className="text-sm text-[#537ec5]">
           {bookings.length} bookings
         </span>
       </div>
 
       {bookings.length === 0 ? (
-        <p className="rounded bg-slate-50 p-4 text-sm text-slate-600">
+        <p
+          className="rounded bg-slate-50 p-4 text-sm text-slate-600"
+          style={{ padding: "1rem" }}
+        >
           No bookings yet.
         </p>
       ) : (

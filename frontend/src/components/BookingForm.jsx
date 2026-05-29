@@ -28,19 +28,37 @@ const BookingForm = ({ onCreate }) => {
   };
 
   return (
-    <section className="rounded border border-slate-200 bg-white p-5 shadow-sm">
-      <h2 className="text-lg font-bold text-slate-900">Create Booking</h2>
+    <section
+      className="rounded border border-slate-100 bg-white shadow-sm"
+      style={{ padding: "1rem" }}
+    >
+      <h2 className="text-lg font-bold text-[#1d4ed8]">Create Booking</h2>
 
       {error && (
-        <p className="mt-3 rounded border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">
+        <p
+          className="rounded border border-red-20o text-sm"
+          style={{
+            marginTop: "1rem",
+            padding: "0.5rem 1rem",
+            backgroundColor: "#ff0000",
+            color: "#ffcccc",
+            fontWeight: "bold",
+            textAlign: "center",
+          }}
+        >
           {error}
         </p>
       )}
 
-      <form onSubmit={handleSubmit} className="mt-4 grid gap-4 md:grid-cols-3">
+      <form
+        onSubmit={handleSubmit}
+        className="grid gap-4 md:grid-cols-3"
+        style={{ marginTop: "0.5rem" }}
+      >
         <div>
           <label
-            className="mb-1 block text-sm font-medium text-slate-700"
+            className=" block text-sm font-medium text-[#537ec5]"
+            style={{ marginBottom: "0.1rem" }}
             htmlFor="startTime"
           >
             Start Time
@@ -50,14 +68,16 @@ const BookingForm = ({ onCreate }) => {
             type="datetime-local"
             value={startTime}
             onChange={(event) => setStartTime(event.target.value)}
-            className="w-full rounded border border-slate-300 px-3 py-2 text-sm"
+            className="w-full rounded border border-slate-300 text-sm"
+            style={{ padding: "0.5rem" }}
             required
           />
         </div>
 
         <div>
           <label
-            className="mb-1 block text-sm font-medium text-slate-700"
+            className="block text-sm font-medium text-[#537ec5]"
+            style={{ marginBottom: "0.1rem" }}
             htmlFor="endTime"
           >
             End Time
@@ -67,7 +87,8 @@ const BookingForm = ({ onCreate }) => {
             type="datetime-local"
             value={endTime}
             onChange={(event) => setEndTime(event.target.value)}
-            className="w-full rounded border border-slate-300 px-3 py-2 text-sm"
+            className="w-full rounded border border-slate-300 text-sm"
+            style={{ padding: "0.5rem" }}
             required
           />
         </div>
@@ -75,7 +96,8 @@ const BookingForm = ({ onCreate }) => {
         <button
           type="submit"
           disabled={loading}
-          className="self-end rounded bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-700 disabled:cursor-not-allowed disabled:bg-slate-400"
+          className="self-end rounded bg-[#6730ec] text-sm font-medium text-white hover:bg-[#7984ee] cursor-pointer"
+          style={{ padding: "0.7em" }}
         >
           {loading ? "Saving..." : "Book Room"}
         </button>

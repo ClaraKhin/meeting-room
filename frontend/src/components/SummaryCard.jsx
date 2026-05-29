@@ -1,8 +1,16 @@
 const SummaryCard = ({ title, value }) => {
   return (
-    <div className="rounded border border-slate-200 bg-white p-4 shadow-sm">
-      <p className="text-sm font-medium text-slate-500">{title}</p>
-      <p className="mt-2 text-3xl font-bold text-slate-900">{value}</p>
+    <div
+      className="rounded border border-slate-200 bg-white shadow-sm"
+      style={{ padding: "1rem" }}
+    >
+      <p
+        className="text-sm font-medium text-[#537ec5]"
+        style={{ marginBottom: "0.5rem" }}
+      >
+        {title}
+      </p>
+      <p className="mt-2 text-3xl font-bold text-[#1d4ed8]">{value}</p>
     </div>
   );
 };
