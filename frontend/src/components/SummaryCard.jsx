@@ -1,10 +1,8 @@
-import React from "react";
-
 const SummaryCard = ({ title, value }) => {
   return (
-    <div className="bg-white rounded shadow p-4">
-      <h2 className="text-xl font-bold mb-4">{title}</h2>
-      <p className="text-2xl font-bold">{value}</p>
+    <div className="rounded border border-slate-200 bg-white p-4 shadow-sm">
+      <p className="text-sm font-medium text-slate-500">{title}</p>
+      <p className="mt-2 text-3xl font-bold text-slate-900">{value}</p>
     </div>
   );
 };

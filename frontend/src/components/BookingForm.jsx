@@ -1,61 +1,86 @@
-import React from "react";
+import { useState } from "react";
+import { getErrorMessage } from "../services/api";
 
-const BookingForm = () => {
+const BookingForm = ({ onCreate }) => {
+  const [startTime, setStartTime] = useState("");
+  const [endTime, setEndTime] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      await onCreate({
+        startTime: new Date(startTime).toISOString(),
+        endTime: new Date(endTime).toISOString(),
+      });
+
+      setStartTime("");
+      setEndTime("");
+    } catch (err) {
+      setError(getErrorMessage(err));
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <div className="p-4">
-      <h2 className="text-2xl font-bold mb-4">Book a Meeting Room</h2>
-      <form className="bg-white shadow-md rounded-lg p-4">
-        <div className="mb-4">
-          <label className="block text-gray-700 mb-2" htmlFor="room">
-            Room
-          </label>
-          <select
-            id="room"
-            className="w-full border border-gray-300 rounded px-3 py-2"
+    <section className="rounded border border-slate-200 bg-white p-5 shadow-sm">
+      <h2 className="text-lg font-bold text-slate-900">Create Booking</h2>
+
+      {error && (
+        <p className="mt-3 rounded border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">
+          {error}
+        </p>
+      )}
+
+      <form onSubmit={handleSubmit} className="mt-4 grid gap-4 md:grid-cols-3">
+        <div>
+          <label
+            className="mb-1 block text-sm font-medium text-slate-700"
+            htmlFor="startTime"
           >
-            <option value="room1">Room 1</option>
-            <option value="room2">Room 2</option>
-            <option value="room3">Room 3</option>
-          </select>
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 mb-2" htmlFor="date">
-            Date
+            Start Time
           </label>
           <input
-            type="date"
-            id="date"
-            className="w-full border border-gray-300 rounded px-3 py-2"
+            id="startTime"
+            type="datetime-local"
+            value={startTime}
+            onChange={(event) => setStartTime(event.target.value)}
+            className="w-full rounded border border-slate-300 px-3 py-2 text-sm"
+            required
           />
         </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 mb-2" htmlFor="time">
-            Time
+
+        <div>
+          <label
+            className="mb-1 block text-sm font-medium text-slate-700"
+            htmlFor="endTime"
+          >
+            End Time
           </label>
           <input
-            type="time"
-            id="time"
-            className="w-full border border-gray-300 rounded px-3 py-2"
+            id="endTime"
+            type="datetime-local"
+            value={endTime}
+            onChange={(event) => setEndTime(event.target.value)}
+            className="w-full rounded border border-slate-300 px-3 py-2 text-sm"
+            required
           />
         </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 mb-2" htmlFor="name">
-            Name
-          </label>
-          <input
-            type="text"
-            id="name"
-            className="w-full border border-gray-300 rounded px-3 py-2"
-          />
-        </div>
+
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+          disabled={loading}
+          className="self-end rounded bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-700 disabled:cursor-not-allowed disabled:bg-slate-400"
         >
-          Book Now
+          {loading ? "Saving..." : "Book Room"}
         </button>
       </form>
-    </div>
+    </section>
   );
 };
 

@@ -1,27 +1,30 @@
-import React from "react";
-
-const NavBar = () => {
+const Navbar = ({ user, onLogout }) => {
   return (
-    <nav className="bg-gray-800 text-white p-4">
-      <div className="container mx-auto flex justify-between items-center">
-        <div className="text-2xl font-bold">Meeting Room Booking</div>
+    <nav className="border-b border-slate-200 bg-white px-6 py-4">
+      <div className="flex items-center justify-between gap-4">
         <div>
-          <a href="/" className="px-3 py-2 hover:bg-gray-700 rounded">
-            Home
-          </a>
-          <a href="/rooms" className="px-3 py-2 hover:bg-gray-700 rounded">
-            Rooms
-          </a>
-          <a href="/bookings" className="px-3 py-2 hover:bg-gray-700 rounded">
-            Bookings
-          </a>
-          <a href="/profile" className="px-3 py-2 hover:bg-gray-700 rounded">
-            Profile
-          </a>
+          <h1 className="text-xl font-bold text-slate-900">
+            Meeting Room Booking
+          </h1>
+          <p className="text-sm text-slate-500">Single room schedule</p>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <div className="text-right">
+            <p className="font-medium text-slate-900">{user.name}</p>
+            <p className="text-sm capitalize text-slate-500">{user.role}</p>
+          </div>
+
+          <button
+            onClick={onLogout}
+            className="rounded bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-700"
+          >
+            Logout
+          </button>
         </div>
       </div>
     </nav>
   );
 };
 
-export default NavBar;
+export default Navbar;

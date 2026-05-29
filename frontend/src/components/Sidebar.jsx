@@ -1,32 +1,30 @@
-import React from "react";
+const menuItems = [
+  { key: "dashboard", label: "Dashboard" },
+  { key: "bookings", label: "Bookings" },
+  { key: "users", label: "Users", adminOnly: true },
+];
 
-const Sidebar = () => {
+const Sidebar = ({ activeTab, role, onTabChange }) => {
   return (
-    <div className="w-64 bg-gray-200 h-screen p-4">
-      <h2 className="text-xl font-bold mb-4">Sidebar</h2>
-      <ul>
-        <li className="mb-2">
-          <a href="#" className="text-gray-700 hover:text-gray-900">
-            Dashboard
-          </a>
-        </li>
-        <li className="mb-2">
-          <a href="#" className="text-gray-700 hover:text-gray-900">
-            Rooms
-          </a>
-        </li>
-        <li className="mb-2">
-          <a href="#" className="text-gray-700 hover:text-gray-900">
-            Bookings
-          </a>
-        </li>
-        <li className="mb-2">
-          <a href="#" className="text-gray-700 hover:text-gray-900">
-            Profile
-          </a>
-        </li>
-      </ul>
-    </div>
+    <aside className="min-h-[calc(100vh-73px)] w-full border-r border-slate-200 bg-slate-50 p-4 md:w-64">
+      <nav className="space-y-2">
+        {menuItems
+          .filter((item) => !item.adminOnly || role === "admin")
+          .map((item) => (
+            <button
+              key={item.key}
+              onClick={() => onTabChange(item.key)}
+              className={`w-full rounded px-4 py-2 text-left text-sm font-medium ${
+                activeTab === item.key
+                  ? "bg-slate-900 text-white"
+                  : "text-slate-700 hover:bg-slate-200"
+              }`}
+            >
+              {item.label}
+            </button>
+          ))}
+      </nav>
+    </aside>
   );
 };
 

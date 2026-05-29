@@ -1,15 +1,33 @@
-import React from "react";
+const formatDateTime = (value) => {
+  return new Date(value).toLocaleString();
+};
 
-const BookingCard = ({ booking }) => {
+const BookingCard = ({ booking, canDelete, onDelete }) => {
+  const bookedBy = booking.user?.name || "Unknown User";
+
   return (
-    <div className="bg-white shadow-md rounded-lg p-4 mb-4">
-      <h3 className="text-xl font-bold mb-2">{booking.roomName}</h3>
-      <p className="text-gray-600 mb-1">Date: {booking.date}</p>
-      <p className="text-gray-600 mb-1">
-        Time: {booking.startTime} - {booking.endTime}
-      </p>
-      <p className="text-gray-600 mb-1">Booked by: {booking.bookedBy}</p>
-    </div>
+    <article className="rounded border border-slate-200 bg-white p-4 shadow-sm">
+      <div className="flex flex-col justify-between gap-3 md:flex-row md:items-center">
+        <div>
+          <h3 className="font-bold text-slate-900">{bookedBy}</h3>
+          <p className="mt-1 text-sm text-slate-600">
+            {formatDateTime(booking.startTime)} to {formatDateTime(booking.endTime)}
+          </p>
+          <p className="mt-1 text-xs text-slate-500">
+            Created {formatDateTime(booking.createdAt)}
+          </p>
+        </div>
+
+        {canDelete && (
+          <button
+            onClick={() => onDelete(booking.id)}
+            className="rounded bg-red-600 px-3 py-2 text-sm font-medium text-white hover:bg-red-700"
+          >
+            Delete
+          </button>
+        )}
+      </div>
+    </article>
   );
 };
 
