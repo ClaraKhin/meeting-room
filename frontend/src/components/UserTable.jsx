@@ -104,15 +104,16 @@ const UserTable = ({
               </td>
 
               <td
-                className="min-w-56 border border-slate-200 text-center md:w-100"
+                className="min-w-56 border border-slate-200 text-center md:w-100 "
                 style={{ padding: "0.5rem" }}
               >
                 <select
                   value={user.role}
                   onChange={(e) => onRoleChange(user.id, e.target.value)}
-                  className="mb-2 w-full rounded border border-slate-300 cursor-pointer outline-none sm:mb-0 sm:mr-4 sm:w-55"
+                  className=" w-full rounded border border-slate-300 cursor-pointer outline-none sm:mb-0 sm:mr-4 sm:w-40"
                   style={{
                     padding: "1rem 0.5rem",
+                    marginRight: "1rem",
                   }}
                 >
                   <option value="user">user</option>

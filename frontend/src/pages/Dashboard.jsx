@@ -136,7 +136,10 @@ const Dashboard = () => {
           onTabChange={setActiveTab}
         />
 
-        <main className="min-w-0 flex-1 bg-[#d6e6f2]" style={{ padding: "1rem" }}>
+        <main
+          className="min-w-0 flex-1 bg-[#d6e6f2]"
+          style={{ padding: "1rem" }}
+        >
           <section
             className="rounded border border-slate-100 bg-white"
             style={{ marginBottom: "1rem", padding: "1rem" }}
@@ -196,16 +199,21 @@ const Dashboard = () => {
 
               {activeTab === "dashboard" && canViewAdminData && (
                 <>
-                  <div className="grid gap-3 md:grid-cols-3">
-                    <SummaryCard title="Total Bookings" value={totalBookings} />
-                    <SummaryCard
-                      title="Users With Bookings"
-                      value={summary.length}
-                    />
-                    <SummaryCard
-                      title="All Users"
-                      value={users.length || "-"}
-                    />
+                  <div className="space-y-5 bg-white">
+                    <div className="grid gap-3 md:grid-cols-3">
+                      <SummaryCard
+                        title="Total Bookings"
+                        value={totalBookings}
+                      />
+                      <SummaryCard
+                        title="Users With Bookings"
+                        value={summary.length}
+                      />
+                      <SummaryCard
+                        title="All Users"
+                        value={users.length || "-"}
+                      />
+                    </div>
                   </div>
 
                   {summary.length > 0 && (
