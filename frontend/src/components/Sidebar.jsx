@@ -6,19 +6,30 @@ const menuItems = [
 
 const Sidebar = ({ activeTab, role, onTabChange }) => {
   return (
-    <aside className="min-h-[calc(100vh-73px)] w-full border-r border-slate-200 bg-slate-50 p-4 md:w-64">
-      <nav className="space-y-2">
+    <aside
+      className="min-h-[calc(100vh-73px)] border-r border-slate-200 bg-slate-50 md:w-64"
+      style={{ padding: "1rem" }}
+    >
+      <nav
+        className="space-y-2"
+        style={{ marginBottom: "1rem", marginTop: "1rem" }}
+      >
         {menuItems
           .filter((item) => !item.adminOnly || role === "admin")
           .map((item) => (
             <button
               key={item.key}
               onClick={() => onTabChange(item.key)}
-              className={`w-full rounded px-4 py-2 text-left text-sm font-medium ${
+              className={`w-full rounded text-left text-sm font-medium ${
                 activeTab === item.key
                   ? "bg-slate-900 text-white"
                   : "text-slate-700 hover:bg-slate-200"
               }`}
+              style={{
+                padding: "0.5rem",
+                marginBottom: "0.35rem",
+                cursor: "pointer",
+              }}
             >
               {item.label}
             </button>
