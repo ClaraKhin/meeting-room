@@ -11,6 +11,21 @@ const app = express();
 
 await connectDB();
 
+const createDefaultAdmin = async () => {
+    const admin = await User.findOne({ role: "admin" });
+
+    if (!admin) {
+        await User.create({
+            name: "Admin",
+            role: "admin",
+        });
+
+        console.log("Default admin user created");
+    }
+};
+
+await createDefaultAdmin();
+
 app.use(express.json());
 app.use(cors());
 
